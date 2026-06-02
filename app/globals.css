@@ -1,0 +1,251 @@
+/* ========================================
+   CSS Variables - Định nghĩa các biến CSS
+   ======================================== */
+:root {
+  /* Màu sắc */
+  --color-primary: #0f172a;
+  --color-secondary: #1e293b;
+  --color-text: #f1f5f9;
+  --color-accent: #3b82f6;
+  --color-accent-hover: #2563eb;
+  
+  /* Font */
+  --font-primary: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  --font-size-base: 16px;
+  --font-size-title: 3.5rem;
+  --font-size-subtitle: 1.25rem;
+  
+  /* Khoảng cách */
+  --spacing-base: 1rem;
+  --spacing-lg: 2rem;
+  --spacing-xl: 3rem;
+  
+  /* Timing */
+  --transition-duration: 0.3s;
+  --transition-easing: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ========================================
+   Reset & Cấu hình cơ bản
+   ======================================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  /* Thiết lập font và màu nền */
+  font-family: var(--font-primary);
+  font-size: var(--font-size-base);
+  line-height: 1.6;
+  color: var(--color-text);
+  background-color: var(--color-primary);
+  
+  /* Smooth transitions */
+  transition: background-color var(--transition-duration) var(--transition-easing);
+}
+
+/* ========================================
+   Layout chính - Căn giữa nội dung
+   ======================================== */
+main {
+  /* Sử dụng Flexbox để căn giữa theo cả chiều ngang và dọc */
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Căn giữa theo chiều dọc */
+  align-items: center;     /* Căn giữa theo chiều ngang */
+  
+  /* Chiều cao */
+  min-height: 100vh;
+  
+  /* Khoảng cách */
+  padding: var(--spacing-xl);
+}
+
+/* ========================================
+   Container chứa nội dung chính
+   ======================================== */
+.container {
+  /* Giới hạn chiều rộng tối đa */
+  max-width: 800px;
+  width: 100%;
+  
+  /* Căn giữa */
+  text-align: center;
+  
+  /* Hiệu ứng fade-in */
+  animation: fadeIn 0.8s var(--transition-easing) forwards;
+  opacity: 0;
+}
+
+/* ========================================
+   Tiêu đề chính
+   ======================================== */
+.title {
+  /* Kích thước chữ */
+  font-size: var(--font-size-title);
+  font-weight: 700;
+  line-height: 1.2;
+  
+  /* Màu sắc */
+  color: var(--color-text);
+  
+  /* Khoảng cách */
+  margin-bottom: var(--spacing-lg);
+  
+  /* Hiệu ứng hover */
+  transition: color var(--transition-duration) var(--transition-easing);
+}
+
+.title:hover {
+  color: var(--color-accent);
+}
+
+/* ========================================
+   Đoạn mô tả
+   ======================================== */
+.description {
+  /* Kích thước chữ */
+  font-size: var(--font-size-subtitle);
+  font-weight: 400;
+  
+  /* Màu sắc */
+  color: var(--color-secondary);
+  
+  /* Khoảng cách */
+  margin-bottom: var(--spacing-lg);
+  
+  /* Chiều rộng tối đa */
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  
+  /* Hiệu ứng hover nhẹ */
+  transition: color var(--transition-duration) var(--transition-easing);
+}
+
+.description:hover {
+  color: var(--color-text);
+}
+
+/* ========================================
+   Nút hành động (tùy chọn)
+   ======================================== */
+.cta-button {
+  /* Padding và border */
+  padding: var(--spacing-base) calc(var(--spacing-base) * 2);
+  border: 2px solid var(--color-accent);
+  border-radius: 8px;
+  
+  /* Nền và chữ */
+  background-color: var(--color-accent);
+  color: white;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  
+  /* Transition mượt */
+  transition: all var(--transition-duration) var(--transition-easing);
+  
+  /* Loại bỏ style mặc định */
+  font-family: inherit;
+}
+
+.cta-button:hover {
+  background-color: var(--color-accent-hover);
+  border-color: var(--color-accent-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+}
+
+.cta-button:active {
+  transform: translateY(0);
+}
+
+/* ========================================
+   Hiệu ứng Animation
+   ======================================== */
+
+/* Fade-in animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ========================================
+   Responsive Design
+   ======================================== */
+
+/* Tablets - Màn hình 768px trở lên */
+@media (max-width: 768px) {
+  :root {
+    --font-size-title: 2.5rem;
+    --font-size-subtitle: 1.1rem;
+    --spacing-xl: 2rem;
+  }
+
+  main {
+    padding: var(--spacing-lg);
+  }
+}
+
+/* Mobile - Màn hình 480px trở lên */
+@media (max-width: 480px) {
+  :root {
+    --font-size-title: 2rem;
+    --font-size-subtitle: 1rem;
+    --font-size-base: 14px;
+    --spacing-xl: 1.5rem;
+    --spacing-lg: 1rem;
+  }
+
+  main {
+    padding: var(--spacing-base);
+  }
+
+  .container {
+    /* Thêm padding để tránh content bị cắt ở cạnh */
+    padding: var(--spacing-base);
+  }
+
+  .title {
+    margin-bottom: var(--spacing-base);
+  }
+
+  .description {
+    margin-bottom: var(--spacing-lg);
+  }
+}
+
+/* ========================================
+   Dark mode support (tùy chọn)
+   ======================================== */
+@media (prefers-color-scheme: light) {
+  :root {
+    --color-primary: #f8fafc;
+    --color-secondary: #e2e8f0;
+    --color-text: #0f172a;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
